@@ -1,0 +1,24 @@
+{
+    "name": "origenvfe-v2",
+    "version": "1.0.0",
+    "description": "Version 2 de OrigenVFE",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "gulp"
+    },
+    "keywords": [
+      "SASS"
+    ],
+    "author": "Emiliano Duran",
+    "license": "ISC",
+    "devDependencies": {
+      "glob": "^11.0.1",
+      "gulp": "^5.0.0",
+      "gulp-sass": "^6.0.0",
+      "gulp-terser": "^2.1.0",
+      "sass": "^1.84.0",
+      "sharp": "^0.33.5"
+    }
+  }
+  
