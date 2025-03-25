@@ -1,0 +1,1 @@
+function slder(){let e=document.querySelectorAll(".img_gall"),t=e.length,l=document.querySelector(".productMain_container_slider_slides");for(let r=0;r<t;r++)e[r].addEventListener("mouseover",(()=>{e.forEach((e=>{e.style.opacity="0.7"})),e[r].style.opacity="1",l.style.transform=`translateX(calc(-${100*r}%))`}))}addEventListener("DOMContentLoaded",(()=>{slder()}));
