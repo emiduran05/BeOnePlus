@@ -1,15 +1,29 @@
+body {
+  font-family: "Nunito", sans-serif;
+}
+
 .productMain_container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 20px;
+  display: block;
+}
+@media (min-width: 1024px) {
+  .productMain_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+  }
 }
 
 .productMain_container_slider {
-  width: 70%;
+  width: 95%;
   margin: 10px auto;
   overflow: hidden;
   border: 2px solid #e1e1e1;
   border-radius: 20px;
+}
+@media (min-width: 1024px) {
+  .productMain_container_slider {
+    width: 70%;
+  }
 }
 
 .productMain_container_slider_slides {
@@ -22,11 +36,16 @@
 }
 
 .gallery {
-  width: 70%;
+  width: 95%;
   margin: 0 auto;
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(5, 1fr);
+}
+@media (min-width: 1024px) {
+  .gallery {
+    width: 70%;
+  }
 }
 .gallery img {
   width: 100%;
@@ -38,14 +57,58 @@
 
 .productMain_container_images {
   position: sticky;
-  height: 1px;
   top: 10px;
 }
 
-body {
-  min-height: 500vh;
+.radio {
+  appearance: none; /* Quita el estilo predeterminado */
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  border: 2px solid #555;
+}
+.radio:hover {
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #555;
+}
+
+input[type=radio]:checked {
+  background-color: #000;
+}
+
+.select {
+  display: block;
+  margin-top: 10px;
+  width: 100px;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .productMain_container_info {
-  height: 2000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.productMain_container_info h1 {
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .productMain_container_info {
+    justify-content: flex-start;
+    align-items: start;
+  }
+}
+
+.listMCE {
+  margin: 0;
+  padding: 0;
+}
+
+.descp {
+  font-size: 18px;
 }/*# sourceMappingURL=app.css.map */
