@@ -22,7 +22,7 @@ body {
 }
 @media (min-width: 1024px) {
   .productMain_container_slider {
-    width: 70%;
+    width: 80%;
   }
 }
 
@@ -44,7 +44,7 @@ body {
 }
 @media (min-width: 1024px) {
   .gallery {
-    width: 70%;
+    width: 80%;
   }
 }
 .gallery img {
@@ -62,14 +62,14 @@ body {
 
 .radio {
   appearance: none; /* Quita el estilo predeterminado */
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border: none;
   border-radius: 50%;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  border: 2px solid #555;
+  border: 1px solid #555;
 }
 .radio:hover {
   border: 2px solid #fff;
@@ -82,6 +82,7 @@ input[type=radio]:checked {
 
 .select {
   display: block;
+  text-align: center;
   margin-top: 10px;
   width: 100px;
   padding: 5px;
@@ -92,10 +93,12 @@ input[type=radio]:checked {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 15px;
   align-items: center;
 }
 .productMain_container_info h1 {
   text-align: center;
+  font-size: 35px;
 }
 @media (min-width: 1024px) {
   .productMain_container_info {
@@ -110,5 +113,86 @@ input[type=radio]:checked {
 }
 
 .descp {
+  font-size: 18px;
+}
+
+.collapse_button {
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #5a3b99;
+  background-color: transparent;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 24px;
+}
+
+#form {
+  margin-bottom: 15px;
+}
+
+.container {
+  margin-top: 20px;
+  width: 90%;
+}
+
+.btn-primary {
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  background-color: #5a3b99;
+  color: #fff;
+  margin-top: 15px;
+}
+
+.g-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.size-btn {
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.size-btn:hover, .size-btn.active {
+  background-color: #6a11cb;
+  color: white;
+  border-color: #6a11cb;
+}
+
+.product-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.reviews {
+  color: #ff9800;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-add-cart {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 18px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.btn-add-cart:hover {
+  background: linear-gradient(45deg, #2575fc, #6a11cb);
+}
+
+.color, .talla {
   font-size: 18px;
 }/*# sourceMappingURL=app.css.map */

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +18,7 @@
     $productosAgrupados = set_api();
     $data = api();
     $id = $_GET["id"];
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $appearance = $_POST["color"];
     }
 
@@ -64,32 +62,90 @@
 
 
             <div class="productMain_container_info">
-                <h1><?php echo $data["items"][$id]["title"];  ?></h1>
-                <p>$<?php echo $productosAgrupados[$id][0]["price"] ?> <b>MXN</b></p>
-                <form action="" method="POST" id="form">
-
-                    <?php for ($i = 0; $i < count($productosAgrupados[$id]); $i++): ?>
-                        <input class="radio" type="radio" title="<?php echo $productosAgrupados[$id][$i]["colorName"] ?>" value="<?php echo $i; ?>" name="color" style="background-color: <?php echo $productosAgrupados[$id][$i]["hex"]; ?>;">
-                    <?php endfor ?>
-
-                    <select class="select" name="size" id="">
-                        <?php for ($i = 0; $i < count($productosAgrupados[$id][0]["sizes"]); $i++): ?>
-                            <option value=""><?php echo $productosAgrupados[$id][0]["sizes"][$i]; ?></option>
-                        <?php endfor ?>
-                    </select>
 
 
-                </form>
+                <div class="container cont">
 
-                <p>Stock: <b><?php echo $data["items"][0]["variants"][0]["stock"] ?></b></p>
+                    <div class="card  p-4">
+                        <div>
+                            <h1 class="mb-4" style="text-align: start;"> <?php echo $data["items"][$id]["title"];  ?></h1>
+                            <!-- Calificación -->
+                            <div class="reviews">⭐⭐⭐⭐⭐ 4.8/5 (128 opiniones)</div>
 
-                <p class="descp"><?php echo $data["items"][$id]["description"] ?></p>
+                            <p class="text-muted price"><strong>$<?php echo $productosAgrupados[$id][0]["price"] ?></strong></p>
+
+                            <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+                                <p class="color"><strong>Color: <?php echo $productosAgrupados[$id][$appearance]["colorName"] ?></strong></p>
+                            <?php else: ?>
+                                <p class="color"><strong>Color: <?php echo $productosAgrupados[$id][0]["colorName"] ?></strong></p>
+                            <?php endif ?>
+
+
+
+                            <form action="" method="POST" id="form">
+
+                                <?php for ($i = 0; $i < count($productosAgrupados[$id]); $i++): ?>
+                                    <input class="radio" type="radio" title="<?php echo $productosAgrupados[$id][$i]["colorName"] ?>" value="<?php echo $i; ?>" name="color" style="background-color: <?php echo $productosAgrupados[$id][$i]["hex"]; ?>;">
+                                <?php endfor ?>
+
+                                <p class="mt-3 talla"><strong>Selecciona tu talla:</strong></p>
+                                <div class="d-flex gap-10" style="flex-wrap: wrap;">
+                                    <?php for ($i = 0; $i < count($productosAgrupados[$id][1]["sizes"]); $i++): ?>
+                                        <button type="button" class="size-btn mr-2" data-size="<?php echo $productosAgrupados[$id][0]["sizes"][$i] ?>"><?php echo $productosAgrupados[$id][0]["sizes"][$i] ?></button>
+                                    <?php endfor ?>
+
+                                </div>
+                                <input type="hidden" name="talla" id="selectedSize">
+
+
+
+                            </form>
+
+                            <p class="text-success">Stock: <b><?php echo $data["items"][0]["variants"][0]["stock"] ?> disponibles</b></p>
+
+
+
+                            <div class="">
+
+                                <!-- Botón para mostrar/ocultar el contenido -->
+                                <button type="button" data-bs-toggle="collapse" data-bs-target="#contenido" class="collapse_button">
+                                    View Product Details <i class="fa-solid fa-arrow-down"></i>
+                                </button>
+
+                                <!-- Contenido colapsable -->
+                                <div class="collapse mt-4" id="contenido">
+                                    <div class="card card-body">
+                                        <p class="descp"><?php echo $data["items"][$id]["description"] ?></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form action="agregar_carrito.php" method="POST" class="">
+                                <input type="hidden" name="id_producto" value="123">
+                                <input type="hidden" name="nombre" value="Cuadro Decorativo">
+                                <input type="hidden" name="precio" value="250.00">
+
+
+                                <label for="cantidad" class="" style="text-align: start;">Cantidad:</label>
+                                <input type="number" name="cantidad" id="cantidad" class="form-control mb-3  " style="width: 100px; text-align: start;" value="1" min="1" required>
+
+                                <button type="submit" class="btn btn-primary " style="background-color: #5a3b99; padding: 15px; border-radius: 20px;"> Agregar al Carrito</button>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-        </div>
 
     </main>
 
-    <script src="build/js/app.js"></script>
-    </body>
+
+        <!-- Agregar Bootstrap JS desde CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="build/js/app.js"></script>
+        </body>
 
 </html>
