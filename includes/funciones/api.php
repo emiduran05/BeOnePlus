@@ -8,8 +8,8 @@ function set_api(){
     $ch = curl_init();
 
 
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); /*NO incluir en el git push, siempre comentar*/
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); /*NO incluir en el git push, siempre comentar*/
 
 
     curl_setopt($ch, CURLOPT_URL, $apiUrl);
@@ -84,8 +84,8 @@ function api(){
     $ch = curl_init();
 
 
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); /*NO incluir en el git push, siempre comentar*/
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); /*NO incluir en el git push, siempre comentar*/
 
 
     curl_setopt($ch, CURLOPT_URL, $apiUrl);
@@ -115,8 +115,8 @@ function getSizeChart($productTypeId){
     $ch = curl_init();
 
     
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); /*NO incluir en el git push, siempre comentar*/
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); /*NO incluir en el git push, siempre comentar*/
 
     
     // Configura las opciones de la petición
