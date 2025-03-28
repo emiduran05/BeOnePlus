@@ -6,4 +6,6 @@ $api = getSizeChart(111);
 
 var_dump($api);
 
+echo $api;
+
 ?>

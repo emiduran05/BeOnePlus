@@ -1,3 +1,26 @@
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    require "includes/funciones/api.php";
+    $products = set_api();
+
+
+    $id = $_GET["id"];
+    $color = $_POST["color"];
+
+    $imgArr = $products[$id][$color]["imageUrl"];
+    $arr = [
+        "color" => $color,
+        "id" => $id,
+        "imagenes" => $imgArr,
+    ];
+
+    echo json_encode($arr);
+
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +118,7 @@
                                     <?php endfor ?>
 
                                 </div>
-                                <input type="hidden" name="talla" id="selectedSize">
+                                <input type="hidden" name="talla" id="selectedSize" >
 
 
 
@@ -140,6 +163,15 @@
             </div>
 
     </main>
+
+    <?php 
+        $sizingInfo = getSizeChart($data["items"][$id]["variants"][0]["productTypeId"]); 
+    ?>
+    <section class="sizing_table">
+    <h2 class="text-center">Sizing Information:</h2>
+    <img src="<?php echo  $sizingInfo->sizeImageUrl ?>" alt="Sizing photo">
+        
+    </section>
 
 
         <!-- Agregar Bootstrap JS desde CDN -->
