@@ -32,6 +32,7 @@ document.querySelectorAll('input[name="color"]').forEach(input => {
         })
         .then(response => response.json())
         .then(data => {
+            console.log("desde api");
             img_container.innerHTML = "";
             gallery.innerHTML = "";
 
