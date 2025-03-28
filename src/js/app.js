@@ -24,7 +24,7 @@ document.querySelectorAll('input[name="color"]').forEach(input => {
         let form = document.getElementById("form");
         let formData = new FormData(form);
 
-        fetch(`product_page.php?id=${id}`, {
+        fetch(`https://blanchedalmond-jellyfish-468937.hostingersite.com/product_page.php?id=${id}`, {
             method: 'POST',
             body: formData
         })
