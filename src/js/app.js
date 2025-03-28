@@ -24,11 +24,9 @@ document.querySelectorAll('input[name="color"]').forEach(input => {
         let form = document.getElementById("form");
         let formData = new FormData(form);
 
-        fetch(`product_page.php?id=${id}`, {
+        fetch(`prueba.php?id=${id}`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded' // O application/json si cambias el formato
-            },
+            
             body: formData
         })
         .then(response => response.json())

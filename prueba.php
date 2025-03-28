@@ -1,11 +1,22 @@
-<?php require "includes/funciones/api.php";
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    require "includes/funciones/api.php";
+    $products = set_api();
 
-$api1 = api();
-$api = getSizeChart(111);
 
+    $id = $_GET["id"];
+    $color = $_POST["color"];
 
-var_dump($api);
+    $imgArr = $products[$id][$color]["imageUrl"];
+    $arr = [
+        "color" => $color,
+        "id" => $id,
+        "imagenes" => $imgArr,
+    ];
 
-echo $api;
+    echo json_encode($arr);
+    exit;
+
+}
 
 ?>
