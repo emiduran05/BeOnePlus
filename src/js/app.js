@@ -3,16 +3,17 @@ addEventListener("DOMContentLoaded", ()=>{
 })
 
 
-function autoSubmit(){
-    let radio = document.querySelectorAll(".radio");
-    let form = document.getElementById("form");
+// function autoSubmit(){
+//     let radio = document.querySelectorAll(".radio");
+//     let form = document.getElementById("form");
+//     form.preventDefault();
 
-    radio.forEach(element => {
-        element.addEventListener("change", () =>{
-            form.submit();
-        })
-    })
-}
+//     radio.forEach(element => {
+//         element.addEventListener("change", () =>{
+//             form.submit();
+//         })
+//     })
+// }
 
 document.querySelectorAll('input[name="color"]').forEach(input => {
     input.addEventListener('change', function() {
