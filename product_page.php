@@ -119,7 +119,7 @@
                                     </style>
                                     <?php
                                         echo "no";
-                                    }
+                                    } //
                                     ?> available</b>
                             </p>
 
