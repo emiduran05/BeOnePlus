@@ -34,6 +34,7 @@ for($i = 0; $i < count($data["items"]); $i++):
     foreach($data["items"][$i]["variants"] as $element){
         $appearanceId = $element["appearanceId"];
         $size = $element["sizeName"];
+        $sku = $element["sku"];
         $price = $element["d2cPrice"];
         $colorName = $element["appearanceName"];
         $HEX = $element["appearanceColorValue"];
@@ -45,12 +46,17 @@ for($i = 0; $i < count($data["items"]); $i++):
                 "price" => $price,
                 "colorName" => $colorName,
                 "hex" => $HEX,
+                "sku" => [$sku],
                 "sizes" => [$size],
                 "imageUrl" => []
             ];
         }else{
             if (!in_array($size, $productosAgrupados[$i][$index]['sizes'])) {
                 $productosAgrupados[$i][$index]['sizes'][] = $size;
+            }
+
+            if(!in_array($sku, $productosAgrupados[$i][$index]["sizes"])){
+                $productosAgrupados[$i][$index]['sku'][] = $sku;
             }
         }
     
@@ -137,4 +143,38 @@ function getSizeChart($productTypeId){
 
     return $data;
     
+}
+
+function queryStock($sku){
+    
+    // Configura tu token de acceso y el ID del tipo de producto
+    $accessToken = "73d60ff1-2ee2-4b79-b3bc-96f38aa88bbd"; // Reemplaza con tu token real
+    
+    // URL de la API
+    $url = "https://api.spreadconnect.app/stock/{$sku}";
+    
+    // Inicializa cURL
+    $ch = curl_init();
+
+    
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); /*NO incluir en el git push, siempre comentar*/
+
+    
+    // Configura las opciones de la petición
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "X-SPOD-ACCESS-TOKEN: $accessToken",
+        "Accept: application/json"
+    ]);
+    
+    // Ejecuta la petición
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    $data = json_decode($response);
+
+    return $data;
+
 }

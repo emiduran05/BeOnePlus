@@ -15,7 +15,18 @@ addEventListener("DOMContentLoaded", ()=>{
 //     })
 // }
 
-document.querySelectorAll('input[name="color"]').forEach(input => {
+let buttonS = document.querySelectorAll(".btn-size");
+let hidden_input = document.querySelector(".talla");
+
+for(let i = 0; i < buttonS.length; i++){
+    buttonS[i].addEventListener("click", () =>{
+        hidden_input.value = `${i}`;
+        console.log(hidden_input.value);
+    })
+}
+
+
+document.querySelectorAll('input[type="radio"]').forEach(input => {
     input.addEventListener('change', function() {
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
@@ -32,9 +43,20 @@ document.querySelectorAll('input[name="color"]').forEach(input => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("desde api");
             img_container.innerHTML = "";
             gallery.innerHTML = "";
+
+            console.log(data);
+            if(data.stock > 0){
+                document.querySelector(".stock").style.color = "green";
+                document.querySelector(".stock").innerHTML = `Stock: <b> ${data.stock} available </b>` ;
+            }else{
+                document.querySelector(".stock").style.color = "red";
+                document.querySelector(".stock").innerHTML = `Stock: <b> ${data.stock} available </b>` ;
+             
+            }
+            document.querySelector(".color").innerHTML = `<strong> Color: ${data.colorName}</strong>`;
+            document.querySelector(".sizeName").innerHTML =  `<strong> Selected Size: ${data.sizeName} </strong>`
 
             data.imagenes.forEach(element => {
                 let img = document.createElement("img");
